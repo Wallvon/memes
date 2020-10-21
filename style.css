@@ -1,0 +1,16 @@
+body, html {
+	background-color: #0c0f27;
+}
+a {
+	color: #fff;
+}
+a:hover {
+	color: #9b9b9b;
+	text-decoration: none;
+}
+tr {
+	border-top-color: #12173b !important;
+}
+footer {
+	background-color: #0c0f27 !important;
+}
