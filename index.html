@@ -18,7 +18,7 @@
 				</li>
 			</ul>
 		</div>
-	</nav>
+  </nav>
     <table class="uk-table uk-table-divider">
       <thead>
         <tr>
@@ -38,15 +38,18 @@
 	</footer>
     <script>
       (async () => {
+        var denylist = ['CNAME', 'index.html', 'style.css'];
         const response = await fetch('https://api.github.com/repos/Wallvon/memes/contents/');
         const data = await response.json();
         for (let file of data) {
-			var tableRef = document.getElementsByClassName('file-list')[0];
-			var rows = tableRef.rows;
-			var rowsSoFar = (rows==null) ? 0 : rows.length;
-			var newRow = tableRef.insertRow(rowsSoFar);
-			var newCell  = newRow.insertCell(0);
-			newCell.innerHTML = `<a href="${file.path}">${file.name}</a>`;
+          if (denylist.indexOf(file.name) === -1) {
+            var tableRef = document.getElementsByClassName('file-list')[0];
+            var rows = tableRef.rows;
+            var rowsSoFar = (rows==null) ? 0 : rows.length;
+            var newRow = tableRef.insertRow(rowsSoFar);
+            var newCell  = newRow.insertCell(0);
+            newCell.innerHTML = `<a href="${file.path}">${file.name}</a>`;
+          }
         }
       })()
     </script>
